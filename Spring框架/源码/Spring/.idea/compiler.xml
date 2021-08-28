@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="HelloSpring" />
+        <module name="Anno" />
+        <module name="Proxy" />
+        <module name="AOP" />
+        <module name="Autowired" />
+        <module name="Transaction" />
+        <module name="IOC01" />
+        <module name="Mybatis" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

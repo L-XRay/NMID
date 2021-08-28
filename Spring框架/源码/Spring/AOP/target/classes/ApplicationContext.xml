@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:AOP="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--bean就是java对象 , 由Spring创建和管理
+
+    id = 变量名
+    class = new的对象
+    property相当于给对象的属性设置一个值
+    -->
+
+    <!--注册bean-->
+    <bean id="userService" class="com.test.service.UserServiceImpl"/>
+    <bean id="before" class="com.test.log.Before"/>
+    <bean id="after" class="com.test.log.After"/>
+
+<!--    &lt;!&ndash;配置AOP&ndash;&gt;-->
+<!--    &lt;!&ndash;方式一:使用原生Spring API接口&ndash;&gt;-->
+<!--    <AOP:config>-->
+<!--        &lt;!&ndash;切入点&ndash;&gt;-->
+<!--        &lt;!&ndash;expression:表达式-->
+<!--            execution:要执行的位置-->
+<!--        &ndash;&gt;-->
+<!--        <AOP:pointcut id="pointcut" expression="execution(* com.test.service.UserServiceImpl.*(..))"/>-->
+
+<!--        &lt;!&ndash;执行环绕增加&ndash;&gt;-->
+<!--        <AOP:advisor advice-ref="before" pointcut-ref="pointcut"/>-->
+<!--        <AOP:advisor advice-ref="after" pointcut-ref="pointcut"/>-->
+<!--    </AOP:config>-->
+
+<!--    &lt;!&ndash;方式二:使用自定义类&ndash;&gt;-->
+<!--    <bean id="diy" class="com.test.diy.DIYPointCut"/>-->
+
+<!--    <AOP:config>-->
+<!--        &lt;!&ndash;自定义切面   ref:要引用的类&ndash;&gt;-->
+<!--        <AOP:aspect ref="diy">-->
+<!--            &lt;!&ndash;切入点&ndash;&gt;-->
+<!--            <AOP:pointcut id="point" expression="execution(* com.test.service.UserServiceImpl.*(..))"/>-->
+<!--            &lt;!&ndash;通知&ndash;&gt;-->
+<!--            <AOP:before method="Before" pointcut-ref="point"/>-->
+<!--            <AOP:after method="After" pointcut-ref="point"/>-->
+<!--        </AOP:aspect>-->
+<!--    </AOP:config>-->
+    <!--方式三:注解-->
+    <bean id="annotation" class="com.test.diy.AnnotationPointCut"/>
+    <!--开启注解支持-->
+    <AOP:aspectj-autoproxy/>
+</beans>
+
